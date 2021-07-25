@@ -17,7 +17,11 @@ class Di(object):
         return self.dependencyDict
 
     def setDependency(self, dep):
-        self.dependencyDict[dep.__name__] = dep
+        self.dependencyDict[dep.__name__] = dep()
+
+    def addDependencies(self, depList):
+        for dep in depList:
+            self.setDependency(dep)
 
 
 def injectable(*arguments):

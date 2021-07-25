@@ -1,6 +1,9 @@
 import json
 
+from utils.Singleton import singleton
 
+
+@singleton
 class Request:
     headersDict = {}
     body = {}
@@ -8,7 +11,7 @@ class Request:
     query = ''
     url = ''
 
-    def __init__(self, data):
+    def init(self, data):
         self.parseHeaders(data)
         self.parseBody(data['wsgi.input'])
         self.method = data['REQUEST_METHOD'].lower()
@@ -28,10 +31,13 @@ class Request:
         self.body = json.loads(value) if value else value
 
     def getRequestData(self):
+        parsedUrl = self.url.split('/')
+        url = '/' + parsedUrl[0]
         return {
             "headers": self.headersDict,
             "body": self.body,
             "method": self.method,
             "query": self.query,
-            "url": self.url
+            "url": url,
+            "param": parsedUrl[-1]
         }

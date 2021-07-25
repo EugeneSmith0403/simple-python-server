@@ -15,11 +15,11 @@ class SqlLiteConnector(DbBase):
             self.dbInstance = sqlite3.connect(self.fileName)
         return self.dbInstance
 
-    def close(self):
-        self.dbInstance.close()
-
     def getInstance(self):
         return self.dbInstance
+
+    def close(self):
+        self.dbInstance.close()
 
     def getCursor(self):
         return self.dbInstance.cursor()

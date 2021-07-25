@@ -17,7 +17,8 @@ Core(options)
 def app(environ, start_response, Router):
 
     try:
-        request = Request(environ)
+        request = Request()
+        request.init(environ)
         requestData = request.getRequestData()
         resources = Router.content(requestData['url'], requestData['method'])
         status = '200 OK'

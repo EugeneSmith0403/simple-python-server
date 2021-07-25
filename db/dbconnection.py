@@ -7,3 +7,12 @@ class DbConnection:
 
     def getInstance(self):
         return self.dbInstance
+
+    def getCursor(self):
+        return self.getInstance().cursor()
+
+    def close(self):
+        return self.getInstance().close()
+
+    def commit(self):
+        return self.dbInstance.commit()

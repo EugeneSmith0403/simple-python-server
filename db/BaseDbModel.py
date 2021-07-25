@@ -4,17 +4,17 @@ class BaseDbModel(object):
     def select(self):
         pass
 
-    def update(self):
+    def update(self, valuesDict, param):
         pass
 
-    def remove(self):
+    def remove(self, param):
         pass
 
-    def create(self):
+    def create(self, data):
         pass
 
     def execute(self):
         pass
 
-    def getById(self, id):
+    def getById(self, param):
         pass
